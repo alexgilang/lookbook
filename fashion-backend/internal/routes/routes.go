@@ -11,12 +11,10 @@ import (
 )
 
 func SetupRoutes(db *gorm.DB, router *gin.Engine) {
-	// Home route
 	router.GET("/", func(ctx *gin.Context) {
 		utils.APIResponse(ctx, "Welcome to Fashion API", http.StatusOK, nil)
 	})
 
-	// Initialize repositories
 	aboutRepo := repositories.NewAboutRepository(db)
 	aksesorisRepo := repositories.NewAksesorisRepository(db)
 	desainRepo := repositories.NewDesainRepository(db)
@@ -24,7 +22,6 @@ func SetupRoutes(db *gorm.DB, router *gin.Engine) {
 	parfumRepo := repositories.NewParfumRepository(db)
 	promosiRepo := repositories.NewPromosiRepository(db)
 
-	// Initialize controllers
 	aboutController := controllers.NewAboutController(aboutRepo)
 	aksesorisController := controllers.NewAksesorisController(aksesorisRepo)
 	desainController := controllers.NewDesainController(desainRepo)
@@ -32,7 +29,6 @@ func SetupRoutes(db *gorm.DB, router *gin.Engine) {
 	parfumController := controllers.NewParfumController(parfumRepo)
 	promosiController := controllers.NewPromosiController(promosiRepo)
 
-	// About routes
 	aboutGroup := router.Group("/about")
 	{
 		aboutGroup.GET("/", aboutController.GetAbout)
@@ -41,7 +37,6 @@ func SetupRoutes(db *gorm.DB, router *gin.Engine) {
 		aboutGroup.DELETE("/:id", aboutController.DeleteAbout)
 	}
 
-	// Aksesoris routes
 	aksesorisGroup := router.Group("/aksesoris")
 	{
 		aksesorisGroup.GET("/", aksesorisController.GetAllAksesoris)
@@ -51,7 +46,6 @@ func SetupRoutes(db *gorm.DB, router *gin.Engine) {
 		aksesorisGroup.DELETE("/:id", aksesorisController.DeleteAksesoris)
 	}
 
-	// Desain routes
 	desainGroup := router.Group("/desain")
 	{
 		desainGroup.GET("/", desainController.GetAllDesain)
@@ -61,7 +55,6 @@ func SetupRoutes(db *gorm.DB, router *gin.Engine) {
 		desainGroup.DELETE("/:id", desainController.DeleteDesain)
 	}
 
-	// Pakaian routes
 	pakaianGroup := router.Group("/pakaian")
 	{
 		pakaianGroup.GET("/", pakaianController.GetAllPakaian)
@@ -71,7 +64,6 @@ func SetupRoutes(db *gorm.DB, router *gin.Engine) {
 		pakaianGroup.DELETE("/:id", pakaianController.DeletePakaian)
 	}
 
-	// Parfum routes
 	parfumGroup := router.Group("/parfum")
 	{
 		parfumGroup.GET("/", parfumController.GetAllParfum)
@@ -81,7 +73,6 @@ func SetupRoutes(db *gorm.DB, router *gin.Engine) {
 		parfumGroup.DELETE("/:id", parfumController.DeleteParfum)
 	}
 
-	// Promosi routes
 	promosiGroup := router.Group("/promosi")
 	{
 		promosiGroup.GET("/", promosiController.GetAllPromosi)

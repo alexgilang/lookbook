@@ -11,7 +11,6 @@ import (
 	"gorm.io/gorm"
 )
 
-// ConnectDB establishes a connection to the database using the provided configuration.
 func ConnectDB(cfg config.Config) (*gorm.DB, error) {
 	dsn := fmt.Sprintf("host=%s user=%s password=%s dbname=%s port=%s sslmode=disable",
 		cfg.DBHost, cfg.DBUser, cfg.DBPassword, cfg.DBName, cfg.DBPort)

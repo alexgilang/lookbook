@@ -6,7 +6,6 @@ import (
 	"github.com/spf13/viper"
 )
 
-// Config holds the application configuration
 type Config struct {
 	DBHost     string `mapstructure:"DB_HOST"`
 	DBUser     string `mapstructure:"DB_USER"`
@@ -16,11 +15,10 @@ type Config struct {
 	ServerPort string `mapstructure:"SERVER_PORT"`
 }
 
-// LoadConfig loads the configuration from environment variables or a .env file
 func LoadConfig() Config {
 	var config Config
 
-	viper.SetConfigFile(".env") // or any other config file
+	viper.SetConfigFile(".env")
 	if err := viper.ReadInConfig(); err != nil {
 		log.Fatalf("Error reading config file: %v", err)
 	}
@@ -28,6 +26,5 @@ func LoadConfig() Config {
 	if err := viper.Unmarshal(&config); err != nil {
 		log.Fatalf("Unable to decode into struct: %v", err)
 	}
-
 	return config
 }

@@ -1,6 +1,6 @@
-DROP TABLE IF EXISTS about;
-DROP TABLE IF EXISTS aksesoris;
-DROP TABLE IF EXISTS desain;
-DROP TABLE IF EXISTS pakaian;
-DROP TABLE IF EXISTS parfum;
-DROP TABLE IF EXISTS promosi;
+DROP TABLE IF EXISTS "public"."about";
+DROP TABLE IF EXISTS "public"."aksesoris";
+DROP TABLE IF EXISTS "public"."desain";
+DROP TABLE IF EXISTS "public"."pakaian";
+DROP TABLE IF EXISTS "public"."parfum";
+DROP TABLE IF EXISTS "public"."promosi";

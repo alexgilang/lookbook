@@ -1,61 +1,64 @@
-CREATE TABLE IF NOT EXISTS about (
+CREATE TABLE IF NOT EXISTS "public"."about" (
     id SERIAL PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
     description TEXT NOT NULL,
-    phone_number VARCHAR(20) NOT NULL,
+    phone_number VARCHAR(50) NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE TABLE IF NOT EXISTS aksesoris (
+CREATE TABLE IF NOT EXISTS "public"."aksesoris" (
     id SERIAL PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
     description TEXT,
-    price DECIMAL(10,2) NOT NULL,
+    category VARCHAR(255),
+    price NUMERIC NOT NULL,
     image_url VARCHAR(255),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE TABLE IF NOT EXISTS desain (
+CREATE TABLE IF NOT EXISTS "public"."desain" (
     id SERIAL PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
     description TEXT,
-    designer VARCHAR(255),
+    category VARCHAR(255),
+    price NUMERIC NOT NULL,
     image_url VARCHAR(255),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE TABLE IF NOT EXISTS pakaian (
+CREATE TABLE IF NOT EXISTS "public"."pakaian" (
     id SERIAL PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
     description TEXT,
-    category VARCHAR(100),
-    price DECIMAL(10,2) NOT NULL,
+    category VARCHAR(255),
+    price NUMERIC NOT NULL,
     image_url VARCHAR(255),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE TABLE IF NOT EXISTS parfum (
+CREATE TABLE IF NOT EXISTS "public"."parfum" (
     id SERIAL PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
     description TEXT,
-    fragrance_type VARCHAR(100),
-    price DECIMAL(10,2) NOT NULL,
+    category VARCHAR(255),
+    price NUMERIC NOT NULL,
     image_url VARCHAR(255),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE TABLE IF NOT EXISTS promosi (
+CREATE TABLE IF NOT EXISTS "public"."promosi" (
     id SERIAL PRIMARY KEY,
-    title VARCHAR(255) NOT NULL,
+    name VARCHAR(255) NOT NULL,
     description TEXT,
-    discount_percentage INT,
-    start_date DATE NOT NULL,
-    end_date DATE NOT NULL,
+    category VARCHAR(255),
+    price NUMERIC NOT NULL,
+    start_date TIMESTAMP NOT NULL,
+    end_date TIMESTAMP NOT NULL,
     image_url VARCHAR(255),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
